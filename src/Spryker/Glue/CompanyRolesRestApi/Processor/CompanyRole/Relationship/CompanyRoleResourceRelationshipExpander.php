@@ -28,10 +28,6 @@ class CompanyRoleResourceRelationshipExpander implements CompanyRoleResourceRela
      */
     protected $companyRoleMapper;
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceBuilderInterface $restResourceBuilder
-     * @param \Spryker\Glue\CompanyRolesRestApi\Processor\CompanyRole\Mapper\CompanyRoleMapperInterface $companyRoleMapper
-     */
     public function __construct(
         RestResourceBuilderInterface $restResourceBuilder,
         CompanyRoleMapperInterface $companyRoleMapper
@@ -68,12 +64,6 @@ class CompanyRoleResourceRelationshipExpander implements CompanyRoleResourceRela
         return $resources;
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceInterface $resource
-     * @param \Generated\Shared\Transfer\CompanyRoleCollectionTransfer $companyRoleCollectionTransfer
-     *
-     * @return void
-     */
     protected function addCompanyRoleRelationships(
         RestResourceInterface $resource,
         CompanyRoleCollectionTransfer $companyRoleCollectionTransfer

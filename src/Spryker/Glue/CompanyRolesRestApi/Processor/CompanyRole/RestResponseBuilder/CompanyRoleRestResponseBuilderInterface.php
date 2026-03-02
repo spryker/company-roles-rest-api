@@ -14,26 +14,12 @@ use Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface;
 
 interface CompanyRoleRestResponseBuilderInterface
 {
-    /**
-     * @param string $companyRoleUuid
-     * @param \Generated\Shared\Transfer\RestCompanyRoleAttributesTransfer $restCompanyRoleAttributesTransfer
-     * @param \Generated\Shared\Transfer\CompanyRoleTransfer|null $companyRoleTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createCompanyRoleRestResponse(
         string $companyRoleUuid,
         RestCompanyRoleAttributesTransfer $restCompanyRoleAttributesTransfer,
         ?CompanyRoleTransfer $companyRoleTransfer = null
     ): RestResponseInterface;
 
-    /**
-     * @param string $companyRoleUuid
-     * @param \Generated\Shared\Transfer\RestCompanyRoleAttributesTransfer $restCompanyRoleAttributesTransfer
-     * @param \Generated\Shared\Transfer\CompanyRoleTransfer|null $companyRoleTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceInterface
-     */
     public function createCompanyRoleRestResource(
         string $companyRoleUuid,
         RestCompanyRoleAttributesTransfer $restCompanyRoleAttributesTransfer,
@@ -47,18 +33,9 @@ interface CompanyRoleRestResponseBuilderInterface
      */
     public function createCompanyRoleCollectionRestResponse(array $companyRoleRestResources): RestResponseInterface;
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createCompanyRoleNotFoundError(): RestResponseInterface;
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createResourceNotImplementedError(): RestResponseInterface;
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createCompanyUserNotSelectedError(): RestResponseInterface;
 }

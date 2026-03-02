@@ -21,11 +21,6 @@ class CompanyRolesRestApiDependencyProvider extends AbstractBundleDependencyProv
      */
     public const CLIENT_COMPANY_ROLE = 'CLIENT_COMPANY_ROLE';
 
-    /**
-     * @param \Spryker\Glue\Kernel\Container $container
-     *
-     * @return \Spryker\Glue\Kernel\Container
-     */
     public function provideDependencies(Container $container): Container
     {
         $container = parent::provideDependencies($container);
@@ -34,11 +29,6 @@ class CompanyRolesRestApiDependencyProvider extends AbstractBundleDependencyProv
         return $container;
     }
 
-    /**
-     * @param \Spryker\Glue\Kernel\Container $container
-     *
-     * @return \Spryker\Glue\Kernel\Container
-     */
     protected function addCompanyRoleClient(Container $container): Container
     {
         $container->set(static::CLIENT_COMPANY_ROLE, function (Container $container) {

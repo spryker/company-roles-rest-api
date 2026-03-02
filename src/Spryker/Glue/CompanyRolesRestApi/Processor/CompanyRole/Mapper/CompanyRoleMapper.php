@@ -12,12 +12,6 @@ use Generated\Shared\Transfer\RestCompanyRoleAttributesTransfer;
 
 class CompanyRoleMapper implements CompanyRoleMapperInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CompanyRoleTransfer $companyRoleTransfer
-     * @param \Generated\Shared\Transfer\RestCompanyRoleAttributesTransfer $restCompanyRoleAttributesTransfer
-     *
-     * @return \Generated\Shared\Transfer\RestCompanyRoleAttributesTransfer
-     */
     public function mapCompanyRoleTransferToRestCompanyRoleAttributesTransfer(
         CompanyRoleTransfer $companyRoleTransfer,
         RestCompanyRoleAttributesTransfer $restCompanyRoleAttributesTransfer

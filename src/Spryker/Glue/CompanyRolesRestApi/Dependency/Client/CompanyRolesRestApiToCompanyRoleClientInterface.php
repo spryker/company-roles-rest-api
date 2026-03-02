@@ -14,19 +14,9 @@ use Generated\Shared\Transfer\CompanyRoleTransfer;
 
 interface CompanyRolesRestApiToCompanyRoleClientInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CompanyRoleCriteriaFilterTransfer $criteriaFilterTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyRoleCollectionTransfer
-     */
     public function getCompanyRoleCollection(
         CompanyRoleCriteriaFilterTransfer $criteriaFilterTransfer
     ): CompanyRoleCollectionTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyRoleTransfer $companyRoleTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyRoleResponseTransfer
-     */
     public function findCompanyRoleByUuid(CompanyRoleTransfer $companyRoleTransfer): CompanyRoleResponseTransfer;
 }

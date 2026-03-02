@@ -27,22 +27,12 @@ class CompanyRolesRestApiToCompanyRoleClientBridge implements CompanyRolesRestAp
         $this->companyRoleClient = $companyRoleClient;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyRoleCriteriaFilterTransfer $criteriaFilterTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyRoleCollectionTransfer
-     */
     public function getCompanyRoleCollection(
         CompanyRoleCriteriaFilterTransfer $criteriaFilterTransfer
     ): CompanyRoleCollectionTransfer {
         return $this->companyRoleClient->getCompanyRoleCollection($criteriaFilterTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyRoleTransfer $companyRoleTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyRoleResponseTransfer
-     */
     public function findCompanyRoleByUuid(CompanyRoleTransfer $companyRoleTransfer): CompanyRoleResponseTransfer
     {
         return $this->companyRoleClient->findCompanyRoleByUuid($companyRoleTransfer);

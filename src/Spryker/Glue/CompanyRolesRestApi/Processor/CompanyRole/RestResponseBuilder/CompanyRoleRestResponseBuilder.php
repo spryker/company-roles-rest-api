@@ -23,21 +23,11 @@ class CompanyRoleRestResponseBuilder implements CompanyRoleRestResponseBuilderIn
      */
     protected $restResourceBuilder;
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceBuilderInterface $restResourceBuilder
-     */
     public function __construct(RestResourceBuilderInterface $restResourceBuilder)
     {
         $this->restResourceBuilder = $restResourceBuilder;
     }
 
-    /**
-     * @param string $companyRoleUuid
-     * @param \Generated\Shared\Transfer\RestCompanyRoleAttributesTransfer $restCompanyRoleAttributesTransfer
-     * @param \Generated\Shared\Transfer\CompanyRoleTransfer|null $companyRoleTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createCompanyRoleRestResponse(
         string $companyRoleUuid,
         RestCompanyRoleAttributesTransfer $restCompanyRoleAttributesTransfer,
@@ -53,13 +43,6 @@ class CompanyRoleRestResponseBuilder implements CompanyRoleRestResponseBuilderIn
             ->addResource($companyRoleRestResource);
     }
 
-    /**
-     * @param string $companyRoleUuid
-     * @param \Generated\Shared\Transfer\RestCompanyRoleAttributesTransfer $restCompanyRoleAttributesTransfer
-     * @param \Generated\Shared\Transfer\CompanyRoleTransfer|null $companyRoleTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceInterface
-     */
     public function createCompanyRoleRestResource(
         string $companyRoleUuid,
         RestCompanyRoleAttributesTransfer $restCompanyRoleAttributesTransfer,
@@ -96,9 +79,6 @@ class CompanyRoleRestResponseBuilder implements CompanyRoleRestResponseBuilderIn
         return $restResponse;
     }
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createCompanyRoleNotFoundError(): RestResponseInterface
     {
         $restErrorTransfer = (new RestErrorMessageTransfer())
@@ -109,9 +89,6 @@ class CompanyRoleRestResponseBuilder implements CompanyRoleRestResponseBuilderIn
         return $this->restResourceBuilder->createRestResponse()->addError($restErrorTransfer);
     }
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createResourceNotImplementedError(): RestResponseInterface
     {
         $restErrorMessageTransfer = (new RestErrorMessageTransfer())
@@ -123,9 +100,6 @@ class CompanyRoleRestResponseBuilder implements CompanyRoleRestResponseBuilderIn
             ->addError($restErrorMessageTransfer);
     }
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createCompanyUserNotSelectedError(): RestResponseInterface
     {
         $restErrorMessageTransfer = (new RestErrorMessageTransfer())
