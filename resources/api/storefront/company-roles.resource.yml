@@ -1,0 +1,74 @@
+resource:
+    name: CompanyRoles
+    shortName: company-roles
+    description: 'Company role information for authenticated company users'
+
+    provider: Spryker\Glue\CompanyRolesRestApi\Api\Storefront\Provider\CompanyRolesStorefrontProvider
+
+    paginationEnabled: false
+
+    security: "is_granted('ROLE_CUSTOMER') or is_granted('ROLE_COMPANY_USER')"
+
+    operations:
+        # BC: legacy `GET /company-roles/mine` returned a JSON:API collection envelope
+        # `{data: [{...}, ...]}` (potentially multiple roles), so this stays as
+        # `GetCollection`. Declared BEFORE `/company-roles/{uuid}` so the literal route
+        # wins over the parameterised one when matching `/company-roles/mine`.
+        - type: GetCollection
+          name: getCompanyRolesMine
+          uriTemplate: '/company-roles/mine'
+          description: 'Retrieve company roles assigned to the currently authenticated company user.'
+
+        # BC: legacy `GET /company-roles/{uuid}` returned a single-item envelope
+        # `{data: {...}}`, so this is `Get` (not `GetCollection`).
+        - type: Get
+          name: getCompanyRoleByUuid
+          uriTemplate: '/company-roles/{uuid}'
+          description: "Retrieve a specific company role by UUID. The role must belong to the authenticated company user's company."
+
+        # BC: legacy `GET /company-roles` (no id) returned 501 Not Implemented.
+        - type: GetCollection
+          name: getCompanyRolesFallback
+          uriTemplate: '/company-roles'
+          description: 'Returns 501 (endpoint not implemented).'
+
+    includes:
+        - relationshipName: companies
+          targetResource: Companies
+          resolverClass: Spryker\Glue\CompaniesRestApi\Api\Storefront\Relationship\CompaniesRelationshipResolver
+
+    properties:
+        uuid:
+            type: string
+            identifier: true
+            writable: false
+            readable: false
+            required: false
+            description: 'Unique company role identifier'
+            openapiContext:
+                example: '50c647a4-d27f-5d82-a587-1d0b7cc6b58d'
+
+        name:
+            type: string
+            writable: false
+            readable: true
+            required: false
+            description: 'Company role name'
+            openapiContext:
+                example: 'Buyer'
+
+        isDefault:
+            type: boolean
+            writable: false
+            readable: true
+            required: false
+            description: 'Whether this is the default company role for the company user'
+            openapiContext:
+                example: true
+
+        idCompany:
+            type: integer
+            writable: false
+            readable: false
+            required: false
+            description: 'Internal FK used only by CompaniesRelationshipResolver. Not exposed in the API response.'

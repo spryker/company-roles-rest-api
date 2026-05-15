@@ -5,7 +5,7 @@
     "license": "proprietary",
     "require": {
         "php": ">=8.3",
-        "spryker/company-role": "^1.5.0",
+        "spryker/company-role": "^1.13.0",
         "spryker/glue-application": "^1.15.0",
         "spryker/glue-application-extension": "^1.0.0",
         "spryker/kernel": "^3.30.0",
@@ -14,9 +14,11 @@
         "spryker/uuid-behavior": "^1.0.0"
     },
     "require-dev": {
+        "spryker/api-platform": "^1.0.0",
         "spryker/code-sniffer": "*"
     },
     "suggest": {
+        "spryker/api-platform": "If you want to expose CompanyRolesRestApi resources through the API Platform stack.",
         "spryker/auth-rest-api": "If you want to authorize and authenticate customers via access tokens."
     },
     "autoload": {

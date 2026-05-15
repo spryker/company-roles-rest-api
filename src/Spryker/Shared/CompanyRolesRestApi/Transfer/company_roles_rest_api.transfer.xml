@@ -9,6 +9,7 @@
     <transfer name="CompanyRole">
         <property name="uuid" type="string" description="A Universally Unique Identifier for an entity."/>
         <property name="fkCompany" type="int"/>
+        <property name="companyUserCollection" type="CompanyUserCollection"/>
     </transfer>
 
     <transfer name="CompanyRoleCollection">
@@ -36,8 +37,17 @@
         <property name="detail" type="string" description="A detailed error message providing more specific information about an issue."/>
     </transfer>
 
+    <transfer name="CompanyUserCollection">
+        <property name="companyUsers" type="CompanyUser[]" singular="companyUser"/>
+    </transfer>
+
     <transfer name="CompanyRoleCriteriaFilter">
         <property name="idCompanyUser" type="int"/>
+        <property name="idCompanyUsers" type="int[]" singular="idCompanyUser"/>
+    </transfer>
+
+    <transfer name="Customer">
+        <property name="companyUserTransfer" type="CompanyUser"/>
     </transfer>
 
 </transfers>
