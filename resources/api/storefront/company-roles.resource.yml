@@ -18,6 +18,16 @@ resource:
           name: getCompanyRolesMine
           uriTemplate: '/company-roles/mine'
           description: 'Retrieve company roles assigned to the currently authenticated company user.'
+          openapiContext:
+              responses:
+                  200:
+                      description: 'Company roles of the authenticated company user returned.'
+                  401:
+                      description: 'Invalid access token.'
+                  403:
+                      description: 'Access denied: missing access token, or no active company user session (code 2103).'
+                  404:
+                      description: 'The authenticated company user has no company role assigned (code 2101).'
 
         # BC: legacy `GET /company-roles/{uuid}` returned a single-item envelope
         # `{data: {...}}`, so this is `Get` (not `GetCollection`).
@@ -25,12 +35,31 @@ resource:
           name: getCompanyRoleByUuid
           uriTemplate: '/company-roles/{uuid}'
           description: "Retrieve a specific company role by UUID. The role must belong to the authenticated company user's company."
+          openapiContext:
+              responses:
+                  200:
+                      description: 'Company role returned.'
+                  401:
+                      description: 'Invalid access token.'
+                  403:
+                      description: 'Access denied: missing access token or insufficient scope.'
+                  404:
+                      description: "Company role not found, or it does not belong to the authenticated company user's company (code 2101)."
 
         # BC: legacy `GET /company-roles` (no id) returned 501 Not Implemented.
         - type: GetCollection
           name: getCompanyRolesFallback
           uriTemplate: '/company-roles'
           description: 'Returns 501 (endpoint not implemented).'
+          # No success response: the endpoint exists only to keep the legacy 501 contract.
+          openapiContext:
+              responses:
+                  401:
+                      description: 'Invalid access token.'
+                  403:
+                      description: 'Access denied: missing access token or insufficient scope.'
+                  501:
+                      description: 'Resource is not implemented.'
 
     includes:
         - relationshipName: companies
