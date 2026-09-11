@@ -50,6 +50,7 @@ resource:
         - type: GetCollection
           name: getCompanyRolesFallback
           uriTemplate: '/company-roles'
+          openapi: false
           description: 'Returns 501 (endpoint not implemented).'
           # No success response: the endpoint exists only to keep the legacy 501 contract.
           openapiContext:
