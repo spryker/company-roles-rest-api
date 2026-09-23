@@ -15,6 +15,9 @@ resource:
         # `GetCollection`. Declared BEFORE `/company-roles/{uuid}` so the literal route
         # wins over the parameterised one when matching `/company-roles/mine`.
         - type: GetCollection
+          extraProperties:
+              notFoundCode: '2101'
+              notFoundMessage: 'Company role not found.'
           name: getCompanyRolesMine
           uriTemplate: '/company-roles/mine'
           description: 'Retrieve company roles assigned to the currently authenticated company user.'
@@ -32,6 +35,9 @@ resource:
         # BC: legacy `GET /company-roles/{uuid}` returned a single-item envelope
         # `{data: {...}}`, so this is `Get` (not `GetCollection`).
         - type: Get
+          extraProperties:
+              notFoundCode: '2101'
+              notFoundMessage: 'Company role not found.'
           name: getCompanyRoleByUuid
           uriTemplate: '/company-roles/{uuid}'
           description: "Retrieve a specific company role by UUID. The role must belong to the authenticated company user's company."
