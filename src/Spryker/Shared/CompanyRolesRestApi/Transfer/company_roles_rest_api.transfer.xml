@@ -10,6 +10,8 @@
         <property name="uuid" type="string" description="A Universally Unique Identifier for an entity."/>
         <property name="fkCompany" type="int"/>
         <property name="companyUserCollection" type="CompanyUserCollection"/>
+        <property name="name" type="string"/>
+        <property name="isDefault" type="bool"/>
     </transfer>
 
     <transfer name="CompanyRoleCollection">
@@ -18,6 +20,8 @@
 
     <transfer name="CompanyUser">
         <property name="companyRoleCollection" type="CompanyRoleCollection" description="A collection of company roles."/>
+        <property name="fkCompany" type="int"/>
+        <property name="idCompanyUser" type="int"/>
     </transfer>
 
     <transfer name="CompanyRoleResponse">
